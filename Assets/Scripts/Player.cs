@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public Vector2 inputVec;
-    public float speed=3;
+    public float speed=5;
 
     Rigidbody2D rigid;
 
@@ -28,6 +29,16 @@ public class Player : MonoBehaviour
         rigid.MovePosition(rigid.position + nextVec);
 
     }
-
+ 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("trigger");
+        speed= speed - 1f;
+        if (speed <= 0)
+        {
+            SceneManager.LoadScene("Die");
+        }
+                
+    }
 
 }
