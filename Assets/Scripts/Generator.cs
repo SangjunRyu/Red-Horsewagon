@@ -22,15 +22,20 @@ public class Generator : MonoBehaviour
         if(curSpawnDelay>maxSpawnDelay)
         {
             Generate();
-            maxSpawnDelay = Random.Range(0.5f, 2f);
+            maxSpawnDelay = Random.Range(0.5f, 0.55f);
             curSpawnDelay = 0;
         }
     }
 
     void Generate()
     {
-        int ranObstacle = Random.Range(1,5);
+        int ranObstacle = Random.Range(1,9);
         int ranPoint = Random.Range(0,5);
         Instantiate(prefabs[ranObstacle], spawnPoints[ranPoint]);
+    }
+
+    void StaticObject(float spawnDelay1, float spawnDelay2)
+    {
+
     }
 }

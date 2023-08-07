@@ -8,7 +8,9 @@ public class Player : MonoBehaviour
     public Vector2 inputVec;
     public float speed=5;
 
-    Rigidbody2D rigid;
+    public Rigidbody2D rigid;
+
+    public string objectTag;
 
     private void Awake()
     {
@@ -27,18 +29,21 @@ public class Player : MonoBehaviour
          
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;  // 크기 정규화. 그냥 deltatime은 update에서
         rigid.MovePosition(rigid.position + nextVec);
-
     }
  
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("trigger");
-        speed= speed - 1f;
-        if (speed <= 0)
+
+        if (other.CompareTag("MovingAx"))   // 날아오는 도끼 맞으면 한방컷
+            SceneManager.LoadScene("Die");
+
+        speed = speed - 1f;
+
+        if (speed <= 1)
         {
             SceneManager.LoadScene("Die");
         }
-                
+
     }
 
 }

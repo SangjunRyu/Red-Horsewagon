@@ -7,6 +7,12 @@ TagManager:
   - Ground
   - Area
   - Border
+  - MovingAx
+  - Blood
+  - Ghost
+  - Eye
+  - GroundCrack
+  - AxBlade
   layers:
   - Default
   - TransparentFX
