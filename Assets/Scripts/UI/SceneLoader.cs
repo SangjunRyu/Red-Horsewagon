@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-
-    public static string loadScene; //가져올 씬 이름
-    public static int loadType; //새로 시작 인지 이어 타기 인지
+    public static int SceneNum; //가져올 씬 넘버
 
 
     void Start()
@@ -15,21 +13,25 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadScene());
     }
 
-    public static void LoadSceneHandle(string _name, int _loadType)
-    {
-        loadScene = _name; //로딩할 씬의 이름
-        loadType = _loadType;
-        SceneManager.LoadScene("Loading");
-    }
-
     IEnumerator LoadScene()
     {
         yield return null;
-        if (loadType == 0)
-            SceneManager.LoadScene("Load_Toilet");
-        else if (loadType == 1)
-            Debug.Log("헌게임");
-
+        if (SceneNum == 1)
+            SceneManager.LoadScene("Toilet_choose");
+        else if (SceneNum == 2)
+            SceneManager.LoadScene("Toilet");
+        else if (SceneNum == 3)
+            SceneManager.LoadScene("Hallway");
+        else if (SceneNum == 4)
+            SceneManager.LoadScene("Clear_Hallway");
+        else if (SceneNum == 5)
+            SceneManager.LoadScene("Playground");
+        else if (SceneNum == 6)
+            SceneManager.LoadScene("Clear_Playground");
+        else if (SceneNum == 7)
+            SceneManager.LoadScene("Hill");
+        else if (SceneNum == 8)
+            SceneManager.LoadScene("Clear_Hill");
 
     }
     
