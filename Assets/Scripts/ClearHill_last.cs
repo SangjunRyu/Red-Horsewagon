@@ -18,7 +18,7 @@ public class ClearHill_last : MonoBehaviour
         {
             if (corout == 0)
             {
-                StartCoroutine(Text_Show(2));
+                StartCoroutine(Text_Show(1));
                 corout++;
                 Debug.Log("약간성공");
             }
