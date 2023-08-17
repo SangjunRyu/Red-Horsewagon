@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Hill.unity
     guid: 177adc1a886ad4f45b72101b7b4032f4
   - enabled: 1
-    path: Assets/Scenes/Clear_Hallway.unity
+    path: Assets/Scenes/Clear_Corridor.unity
     guid: 6e7e343003aedec4da93e931e8124ca8
   - enabled: 1
     path: Assets/Scenes/Die.unity

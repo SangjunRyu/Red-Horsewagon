@@ -7,13 +7,17 @@ public class Playground : MonoBehaviour
     public float speed;
     float viewHeight; // camera 높이 변수
 
-    public bool isMove= true;
+    public bool isMove= true;                   // 끝날때 움직임 비활성화
 
     private SpriteRenderer spriteRenderer;
-    public Sprite newSprite;
-    public GameObject endPoint;
-    GameObject parent;
-    public Generator generator;
+    public Sprite newSprite;                    // 끝날때 종점이 있는 스프라이트로 교체, 꼬깔콘2,6,7제거
+    public GameObject[] roadCone;
+    public GameObject endPoint;                 // 끝날때 종점 탐지포인트 활성화
+    public GameObject parent;                          // 끝날때 장애물 생성기 끄기
+    private Generator generator;
+    public List<GameObject> itemObjects = new List<GameObject>();
+
+    public GameObject[] playGround;
 
     private void Awake()
     {
@@ -22,11 +26,12 @@ public class Playground : MonoBehaviour
         isMove = true;
         parent =  transform.parent.gameObject;
         generator = parent.GetComponentInChildren<Generator>();
-    }
 
-    private void Start()
-    {
-
+        Item[] items = GetComponentsInChildren<Item>();
+        foreach(Item item in items)
+        {
+            itemObjects.Add(item.gameObject);
+        }
     }
 
     void Update()
@@ -44,11 +49,25 @@ public class Playground : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(58f);    
+        this.generator.isEnd = true;            // 장애물 생성 종료. 
+
+        yield return new WaitForSeconds(1f);
+        foreach (GameObject item in itemObjects)
+        {
+            item.SetActive(true);               // 찾기 오브젝트 배치
+        }
+
+        yield return new WaitForSeconds(1f);    // 탈출문 나오게 하기 
         spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
+        foreach(GameObject cone in roadCone)
+        {
+            cone.SetActive(false);              // 꼬깔콘 끄기
+        }
         endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
-        this.generator.isEnd = true;            // generator도 꺼야됨. 
-        this.isMove = false;                    // 먼저 내려간건 끌어올리고, 나중껀 삭제. 제너레이터도 꺼야
+        
+        this.isMove = false;                   
+        this.playGround[1].SetActive(false);
     }
 
 }

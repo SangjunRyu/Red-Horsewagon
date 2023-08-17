@@ -6,10 +6,12 @@ public class Obstacles : MonoBehaviour, IObstacle
 {
     public float speed= 5f;
     public float decel, stopsec;
-    
+    public AudioSource audioSource;
+
     private void Awake()
     {
-
+        audioSource= GetComponent<AudioSource>();
+        audioSource.playOnAwake= false;
     }
 
     private void Update()
@@ -29,6 +31,7 @@ public class Obstacles : MonoBehaviour, IObstacle
 
     public void CollisionEffect(Player player)
     {
+        audioSource.Play();                     // 장애물 소리
         player.SlowDown(decel);                 // 감속
         StartCoroutine(player.Stop(stopsec));   // 일정시간 정지
     }

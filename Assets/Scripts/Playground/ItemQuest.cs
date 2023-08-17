@@ -20,6 +20,11 @@ public class ItemQuest : MonoBehaviour
     private void Awake()
     {
         totalItem = items.Length;   // 총 아이템의 개수 저장
+
+        foreach (var item in items)
+        {
+            item.SetActive(false);  // 시작시 item 꺼두기
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

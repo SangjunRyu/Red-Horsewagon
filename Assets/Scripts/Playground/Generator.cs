@@ -41,10 +41,6 @@ public class Generator : MonoBehaviour
                 curSpawnDelay = 0;
             }
         }
-        //if (isEnd)
-        //{
-        //    gameObject.SetActive(false);
-        //}
     }
 
     void Generate()
