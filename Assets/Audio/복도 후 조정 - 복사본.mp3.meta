@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Audio/복도 후 조정 - 복사본.mp3.meta
 guid: e257189a8dec1994dbafb4bff42a386f
+=======
+guid: 7f9162e85ee60c541856ae6a40343b10
+>>>>>>> Stashed changes:Assets/Audio/BGM/Corridor end.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
     public float speed= 5f;
-
+    public float decel, stopsec;
+    
     private void Awake()
     {
-        
+
     }
 
     private void Update()
@@ -24,5 +25,11 @@ public class Obstacles : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void CollisionEffect(Player player)
+    {
+        player.SlowDown(decel);                 // 감속
+        StartCoroutine(player.Stop(stopsec));   // 일정시간 정지
     }
 }

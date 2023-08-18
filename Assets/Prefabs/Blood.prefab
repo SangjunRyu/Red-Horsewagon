@@ -126,6 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+<<<<<<< Updated upstream
+=======
+  decel: 1
+>>>>>>> Stashed changes
 --- !u!50 &8126004083611342462
 Rigidbody2D:
   serializedVersion: 4

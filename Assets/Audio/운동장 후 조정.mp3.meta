@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/Audio/운동장 후 조정.mp3.meta
 guid: 032b0d558b35b984080dc8841fbb8704
+========
+guid: 5fce7216c57e16b47b53e5b15639f2f0
+>>>>>>>> Stashed changes:Assets/Audio/Walk on the playground.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6

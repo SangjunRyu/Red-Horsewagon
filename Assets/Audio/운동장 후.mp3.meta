@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/Audio/빨간마차 노래 화장실 조정.mp3.meta
-guid: f08509672b225704c99f678c11d42b01
-========
-guid: 6148dffad0be0774cb40f51b1763c2e2
->>>>>>>> Stashed changes:Assets/Audio/비명소.mp3.meta
+guid: 4f89da3e7fde0fa4aadbb68f2e247e8c
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
