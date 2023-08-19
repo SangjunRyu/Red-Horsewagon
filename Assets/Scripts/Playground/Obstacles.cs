@@ -31,8 +31,11 @@ public class Obstacles : MonoBehaviour, IObstacle
 
     public void CollisionEffect(Player player)
     {
-        audioSource.Play();                     // 장애물 소리
-        player.SlowDown(decel);                 // 감속
-        StartCoroutine(player.Stop(stopsec));   // 일정시간 정지
+        if (player.speed > 1)   // 속도가 너무 느리면 비명소리만 들리도록
+        {
+            audioSource.Play();                     // 장애물 소리
+            player.SlowDown(decel);                 // 감속
+            StartCoroutine(player.Stop(stopsec));   // 일정시간 정지
+        }
     }
 }

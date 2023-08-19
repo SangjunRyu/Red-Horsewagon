@@ -11,7 +11,15 @@ public class ClearHill_Btn : MonoBehaviour
     public Image third_illust;
     public Image second_illust;
 
+    public AudioSource audioSource;
+
     public void StopClick()
+    {
+        audioSource.Play();
+        Invoke("LoadDieScene",3.5f);
+    }
+
+    private void LoadDieScene()
     {
         SceneManager.LoadScene("Die");
     }

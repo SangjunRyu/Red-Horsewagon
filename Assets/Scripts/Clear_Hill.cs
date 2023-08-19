@@ -21,6 +21,8 @@ public class Clear_Hill : MonoBehaviour
     public Image second_illust; //빨간마차 내부 일러스트
     public Image third_illust; //
 
+    public AudioSource audioSource;
+
     private int SceneNum = 8;
 
     void Start()

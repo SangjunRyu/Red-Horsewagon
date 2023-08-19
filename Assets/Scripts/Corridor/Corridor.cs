@@ -21,6 +21,8 @@ public class Corridor : MonoBehaviour
 
     public bool gameStart;  // 게임 재개하기 or 나가기 구분용 변수
 
+    public Player player;
+
 
     private int SceneNum = 3;
     void Start()
@@ -62,22 +64,25 @@ public class Corridor : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(8f);    // 58초 예정
         this.generator.isEnd = true;            // 장애물 생성 종료. 
 
-        yield return new WaitForSeconds(1f);
-        foreach (GameObject item in itemObjects)
+        if (player.speed >= 1)
         {
-            item.SetActive(true);               // 찾기 오브젝트 배치
+
+            yield return new WaitForSeconds(1f);
+            foreach (GameObject item in itemObjects)
+            {
+                item.SetActive(true);               // 찾기 오브젝트 배치
+            }
+
+            yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
+            spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
+
+            endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
+
+            this.isMove = false;
+            this.corridor[1].SetActive(false);
         }
-
-        yield return new WaitForSeconds(1f);    // 탈출문 나오게 하기 
-        spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
-       
-        endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
-
-        this.isMove = false;
-        this.corridor[1].SetActive(false);
     }
-
 }
