@@ -62,7 +62,7 @@ public class Playground : MonoBehaviour
             item.SetActive(true);               // 찾기 오브젝트 배치
         }
 
-        yield return new WaitForSeconds(1f);    // 탈출문 나오게 하기 
+        yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
         spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
         foreach(GameObject cone in roadCone)
         {

@@ -62,7 +62,7 @@ public class Hill : MonoBehaviour
             item.SetActive(true);               // 찾기 오브젝트 배치
         }
 
-        yield return new WaitForSeconds(1f);    // 탈출문 나오게 하기 
+        yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
         
         endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
 

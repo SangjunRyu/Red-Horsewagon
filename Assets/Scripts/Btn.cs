@@ -11,9 +11,20 @@ public class Btn : MonoBehaviour
     public Image third_illust;
     public Image second_illust;
 
+    public AudioSource audioSource;
+
     public void StopClick()
     {
+
         GameManager.Instance.OnPlayerDead();
+
+        audioSource.Play();
+        Invoke("LoadDieScene",3.5f);
+    }
+
+    private void LoadDieScene()
+    {
+        SceneManager.LoadScene("Die");
     }
 
     public void SingClick1()

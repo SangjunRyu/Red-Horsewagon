@@ -5,19 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
+    public AudioSource audioSource;
 
-    void Start()
+    void Awake()
     {
-
+        audioSource= GetComponent<AudioSource>();
     }
 
-    void Update()
+    public void Retry()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("restart");
-            GameManager.Instance.isGameover = false;
-            SceneManager.LoadScene(GameManager.Instance.gameScenes);
-        }
+        audioSource.Play();
+        Debug.Log("restart");
+        GameManager.Instance.isGameover = false;
+        SceneManager.LoadScene(GameManager.Instance.gameScenes);
     }
+
+    public void Main() 
+    {
+        Debug.Log("main");
+        SceneManager.LoadScene("Main");
+    }
+
 }

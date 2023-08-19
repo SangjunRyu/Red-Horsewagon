@@ -56,7 +56,7 @@ public class ToiletMap : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(8f);
         this.generator.isEnd = true;            // 장애물 생성 종료. 
 
         yield return new WaitForSeconds(1f);
@@ -65,7 +65,7 @@ public class ToiletMap : MonoBehaviour
             item.SetActive(true);               // 찾기 오브젝트 배치
         }
 
-        yield return new WaitForSeconds(0.8f);    // 탈출문 나오게 하기  타이밍 문 보이도록 맞추기
+        yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기  타이밍 문 보이도록 맞추기
         spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
 
         endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
