@@ -13,15 +13,18 @@ public class Player_Toilet : MonoBehaviour
 
     private AudioSource audioSource;     // 걷기 사운드
 
-    public Canvas dialogue_UI; //대사창 UI
+    public Image dialogue_UI; //대사창 UI
     public Text dialogue_right; //맞는 문 대사
     public Text dialogue_wrong; //틀린 문 대사
+
+    public Image txt_screen;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         dialogue_UI.gameObject.SetActive(false); //대사창 비활성화
+        txt_screen.gameObject.SetActive(false); //글자 연출 화면 비활성화
     }
 
     // Start is called before the first frame update
@@ -35,8 +38,6 @@ public class Player_Toilet : MonoBehaviour
         }
         // x축 (a,d,좌우키로 이동)  raw로 더 섬세한 컨트롤
         //y축도 같은 방식으로 만들어 준다
-
-
 
     }
 
@@ -70,10 +71,11 @@ public class Player_Toilet : MonoBehaviour
     IEnumerator Right()
     {
         dialogue_wrong.gameObject.SetActive(false); //틀렸을때 대사 비활성화
-        dialogue_right.gameObject.SetActive(true); //맞았을때 대사 활성화
+        dialogue_right.gameObject.SetActive(true);;//맞았을때 대사 활성화
         speed = 0; //캐릭터 조작 못하도록
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Toilet");
+        yield return new WaitForSeconds(1f);
+        txt_screen.gameObject.SetActive(true); //글자 연출 화면 활성화
+        dialogue_UI.gameObject.SetActive(false);
     }
 
     IEnumerator Wrong() //잠시 캐릭터 멈춤
