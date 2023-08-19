@@ -53,7 +53,7 @@ public class Hill : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(58f);
+        yield return new WaitForSeconds(8f);
         this.generator.isEnd = true;            // 장애물 생성 종료. 
 
         yield return new WaitForSeconds(1f);

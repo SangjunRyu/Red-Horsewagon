@@ -38,6 +38,10 @@ public class Player : MonoBehaviour
         audioSource.pitch -= 0.25f;
         if(speed <= 1)
         {
+            // new 음원 추가(1초)
+            // 비명소리 재생(1초)
+            // 그 2초동안은 무적(아이템 찾기 x, 장애물 부딪힘 없음)
+            // 속도 더 느려짐(2초동안 0.5까지)
             GameManager.Instance.OnPlayerDead();
         }
     }

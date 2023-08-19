@@ -19,12 +19,15 @@ public class Corridor : MonoBehaviour
 
     public GameObject[] corridor;
 
+    public bool gameStart;  // 게임 재개하기 or 나가기 구분용 변수
+
+
     private int SceneNum = 3;
     void Start()
     {
         PlayerPrefs.SetInt("SceneNum", SceneNum);
         PlayerPrefs.Save();
-
+        gameStart= true;
     }
     private void Awake()
     {
@@ -43,20 +46,23 @@ public class Corridor : MonoBehaviour
 
     void Update()
     {
-        Vector3 curPos = transform.position;                        // 배경 움직이기
-        Vector3 nextPos = Vector3.down * speed * Time.deltaTime;
-        transform.position = curPos + nextPos;
+        //while (gameStart)   // 나가기를 누르지 않았을 경우에 
+        //{
+            Vector3 curPos = transform.position;                        // 배경 움직이기
+            Vector3 nextPos = Vector3.down * speed * Time.deltaTime;
+            transform.position = curPos + nextPos;
 
-        if (transform.position.y < viewHeight * (-1))
-        {
-            transform.position = transform.position + Vector3.up * viewHeight * 2;
-        }
-        StartCoroutine(Timer());
+            if (transform.position.y < viewHeight * (-1))
+            {
+                transform.position = transform.position + Vector3.up * viewHeight * 2;
+            }
+            StartCoroutine(Timer());
+        //}
     }
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(58f);
+        yield return new WaitForSeconds(8f);
         this.generator.isEnd = true;            // 장애물 생성 종료. 
 
         yield return new WaitForSeconds(1f);

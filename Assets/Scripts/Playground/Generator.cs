@@ -10,6 +10,8 @@ public class Generator : MonoBehaviour
 
     public float maxSpawnDelay;
     public float curSpawnDelay;
+    public float spawntime1;
+    public float spawntime2;
 
     public bool isEnd = false;
 
@@ -37,7 +39,7 @@ public class Generator : MonoBehaviour
             if (curSpawnDelay > maxSpawnDelay)
             {
                 Generate();
-                maxSpawnDelay = Random.Range(0.5f, 0.55f);
+                maxSpawnDelay = Random.Range(spawntime1, spawntime2);
                 curSpawnDelay = 0;
             }
         }

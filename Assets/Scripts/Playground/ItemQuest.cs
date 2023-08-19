@@ -12,7 +12,7 @@ public class ItemQuest : MonoBehaviour
                                 // item.setActive(true)로 활성화시키는식으로 구현하기. 
 
     public int totalItem;
-    private static int currentItem = 0;  // 현재 찾은 아이템 개수 초기화. 정적변수로 해서 저장공간을 공유
+    public static int currentItem = 0;  // 현재 찾은 아이템 개수 초기화. 정적변수로 해서 저장공간을 공유
 
     public bool isClear = false;    // 다 찾아야 true로 
     Item item = null;
@@ -35,9 +35,16 @@ public class ItemQuest : MonoBehaviour
         {
             currentItem++;    // 획득 아이템 증가
             Debug.Log("find!");
+            AudioSource audio= collision.gameObject.GetComponent<AudioSource>(); //아이템 획득 음원추가
+            audio.Play();
+            SpriteRenderer sprite = collision.gameObject.GetComponent<SpriteRenderer>(); 
+            sprite.enabled = false; // 아이템 사라지도록 하기 
         }
-        if(currentItem == totalItem)    
-            isClear= true;      // 모두 획득하였으므로 clear
+        if (currentItem == totalItem)
+        {
+            isClear = true;      // 모두 획득하였으므로 clear
+            currentItem= 0;
+        }
     }
 
 }
