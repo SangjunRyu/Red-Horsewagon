@@ -21,10 +21,13 @@ public class Clear_Hill : MonoBehaviour
     public Image second_illust; //빨간마차 내부 일러스트
     public Image third_illust; //
 
-
+    private int SceneNum = 8;
 
     void Start()
     {
+        PlayerPrefs.SetInt("SceneNum", SceneNum);
+        PlayerPrefs.Save();
+
         txtBox.gameObject.SetActive(false);
         txtBox1.gameObject.SetActive(false);
         txtBox2.gameObject.SetActive(false);

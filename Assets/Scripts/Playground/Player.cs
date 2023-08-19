@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D rigid;       
     
     private AudioSource audioSource;     // 걷기 사운드
-    private float initialPitch = 1.25f; // 시작 사운드 높이
-    private float minPitch = 0.25f;     // 속도가 줄었을 때 사운드 느리게
+    //private float initialPitch = 1.25f; // 시작 사운드 높이
+    //private float minPitch = 0.25f;     // 속도가 줄었을 때 사운드 느리게
 
     private void Awake()
     {

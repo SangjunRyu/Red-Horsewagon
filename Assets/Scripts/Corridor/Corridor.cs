@@ -19,6 +19,13 @@ public class Corridor : MonoBehaviour
 
     public GameObject[] corridor;
 
+    private int SceneNum = 3;
+    void Start()
+    {
+        PlayerPrefs.SetInt("SceneNum", SceneNum);
+        PlayerPrefs.Save();
+
+    }
     private void Awake()
     {
         viewHeight = Camera.main.orthographicSize * 2;

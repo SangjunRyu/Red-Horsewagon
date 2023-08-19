@@ -12,15 +12,37 @@ public class BtnType : MonoBehaviour
         switch(currentType)
         {
             case BTNType.New:
-                //Debug.Log("새 게임");
                 SceneManager.LoadScene("Start"); //새로 시작이면 스타트 씬 이동
                 break;
 
             case BTNType.Continue:
-                //Debug.Log("이어 하기");
-                //SceneManager.LoadScene("Load"); //이어하기면 로딩 씬 이동
-                SceneManager.LoadScene("Playground");
-                break;
+                {
+                    if (!PlayerPrefs.HasKey("SceneNum"))
+                        return;
+
+                    int Scene = PlayerPrefs.GetInt("SceneNum");
+                    
+                    if (Scene==0)
+                        SceneManager.LoadScene("Start");
+                    else if (Scene == 1)
+                        SceneManager.LoadScene("Toilet_pre");
+                    else if (Scene == 2)
+                        SceneManager.LoadScene("Toilet");
+                    else if (Scene == 3)
+                        SceneManager.LoadScene("Corridor");
+                    else if (Scene == 4)
+                        SceneManager.LoadScene("Clear_Corridor");
+                    else if (Scene == 5)
+                        SceneManager.LoadScene("Playground");
+                    else if (Scene == 6)
+                        SceneManager.LoadScene("Clear_Playground");
+                    else if (Scene == 7)
+                        SceneManager.LoadScene("Hill");
+                    else if (Scene == 8)
+                        SceneManager.LoadScene("Clear_Hill");
+
+                    break;
+                }
 
             case BTNType.Quit:
                 //Debug.Log("끝");

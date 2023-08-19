@@ -9,20 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 9e42fd762e5f58d448efc089d4767f2d
   - enabled: 1
-    path: Assets/Scenes/Load.unity
-    guid: a0bab92af5c944d43b0c340bdda120d0
-  - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: e2a8991bab93bfb42998e5e60a32c775
   - enabled: 1
+    path: Assets/Scenes/Toilet_pre.unity
+    guid: f5375112b0652ab4f9385a609c9514dc
+  - enabled: 1
     path: Assets/Scenes/Toilet.unity
-    guid: f5e4deb0ecea0774fabd5d9ee0c0b908
+    guid: 9917631f7cf00a1419b1f5cc3e80aa62
   - enabled: 1
-    path: Assets/Scenes/Hallway.unity
-    guid: 9844523aa1177f34aa06bc042250fac7
+    path: Assets/Scenes/Corridor.unity
+    guid: 3529d1b53458d534b8bd051ab545d204
   - enabled: 1
-    path: Assets/Scenes/Clear_Hill.unity
-    guid: 2b42ea138083fa247813b18a799a0336
+    path: Assets/Scenes/Clear_Corridor.unity
+    guid: 6e7e343003aedec4da93e931e8124ca8
   - enabled: 1
     path: Assets/Scenes/Playground.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
@@ -33,12 +33,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Hill.unity
     guid: 177adc1a886ad4f45b72101b7b4032f4
   - enabled: 1
-    path: Assets/Scenes/Clear_Corridor.unity
-    guid: 6e7e343003aedec4da93e931e8124ca8
+    path: Assets/Scenes/Clear_Hill.unity
+    guid: 2b42ea138083fa247813b18a799a0336
   - enabled: 1
     path: Assets/Scenes/Die.unity
     guid: 220cc33cee7c0164ab749eec1ea0fec8
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}

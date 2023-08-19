@@ -9,6 +9,8 @@ TagManager:
   - Border
   - MovingAx
   - EndPoint
+  - Door
+  - Rightdoor
   layers:
   - Default
   - TransparentFX

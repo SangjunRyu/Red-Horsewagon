@@ -18,9 +18,13 @@ public class Hill : MonoBehaviour
     public List<GameObject> itemObjects = new List<GameObject>();
 
     public GameObject[] hill;
+    private int SceneNum = 7;
 
     private void Awake()
     {
+        PlayerPrefs.SetInt("SceneNum", SceneNum);
+        PlayerPrefs.Save();
+
         viewHeight = Camera.main.orthographicSize * 2;
         spriteRenderer = GetComponent<SpriteRenderer>();
         isMove = true;

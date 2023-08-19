@@ -12,9 +12,13 @@ public class Clear_Playground : MonoBehaviour
 
     private int cnt = 0; //텍스트 출력 횟수
     private int TextDelay = 21; //첫 텍스트 출력 딜레이
+    private int SceneNum = 6;
 
     void Start()
     {
+        PlayerPrefs.SetInt("SceneNum", SceneNum);
+        PlayerPrefs.Save();
+
         for (int i = 0; i <= 16; i++)
             dialogue[i].gameObject.SetActive(false);
         Illust.gameObject.SetActive(false); //일러스트 및 텍스트 전체 OFF

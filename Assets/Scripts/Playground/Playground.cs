@@ -6,6 +6,7 @@ public class Playground : MonoBehaviour
 {
     public float speed;
     float viewHeight; // camera 높이 변수
+    private int SceneNum = 5;
 
     public bool isMove= true;                   // 끝날때 움직임 비활성화
 
@@ -21,6 +22,9 @@ public class Playground : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.SetInt("SceneNum", SceneNum);
+        PlayerPrefs.Save();
+
         viewHeight = Camera.main.orthographicSize * 2;
         spriteRenderer = GetComponent<SpriteRenderer>();
         isMove = true;

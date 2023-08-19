@@ -9,9 +9,13 @@ public class Clear_Hallway : MonoBehaviour
     public Text Dialogue;
     public Text Dialogue2;
     private bool LoadScene = false;
+    private int SceneNum = 4;
 
     void Start()
     {
+        PlayerPrefs.SetInt("SceneNum", SceneNum);
+        PlayerPrefs.Save();
+
         Dialogue.gameObject.SetActive(false);
         Dialogue2.gameObject.SetActive(false);
         Invoke("ShowDialogue", 21.0f);

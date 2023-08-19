@@ -26,7 +26,14 @@ public class Start_ : MonoBehaviour
     private int count2 = 0; //두번째 줄 " "
     private int count3 = 0; //세번째 줄 " "
 
-    
+    private int SceneNum=0; //씬 넘버(이어하기)
+
+    private void Awake()
+    {
+        PlayerPrefs.SetInt("SceneNum", SceneNum);
+        PlayerPrefs.Save();
+    }
+
     public int NextDialogue(Text txt, int cnt)
     {
         
@@ -53,7 +60,7 @@ public class Start_ : MonoBehaviour
                     count3=NextDialogue(txt_Dialogue_third, count3); //세번째 줄도 대사 변경
             }
             else //대사 출력 횟수가 8번 이상이라면 씬 이동
-                SceneManager.LoadScene("Toilet");
+                SceneManager.LoadScene("Toilet_pre");
 
             count++; //대사 출력 횟수 증가
         }
