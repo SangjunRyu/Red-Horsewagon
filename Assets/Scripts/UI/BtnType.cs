@@ -7,29 +7,45 @@ public class BtnType : MonoBehaviour
 {
     public BTNType currentType;
 
+    private void Awake()
+    {
+        //Debug.Log(PlayerPrefs.GetInt("SceneNum"));    초깃값이 2로 설정됨.
+    }
     public void OnBtnClick()
     {
         switch(currentType)
         {
             case BTNType.New:
-                SceneManager.LoadScene("Start"); //새로 시작이면 스타트 씬 이동
-                break;
-
+                {
+                    Debug.Log("new");
+                    SceneManager.LoadScene("Start"); //새로 시작이면 스타트 씬 이동
+                    break;
+                }
             case BTNType.Continue:
                 {
-                    if (!PlayerPrefs.HasKey("SceneNum"))
-                        return;
-
+                    if (!PlayerPrefs.HasKey("FirstRun"))
+                    {
+                        PlayerPrefs.SetInt("FirstRun", 1);
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("start");
+                        break;
+                    }   
                     int Scene = PlayerPrefs.GetInt("SceneNum");
-                    
-                    if (Scene==0)
+
+                    if (Scene == 0)
+                    {
+                        Debug.Log("start");
                         SceneManager.LoadScene("Start");
+                    }
                     else if (Scene == 1)
                         SceneManager.LoadScene("Toilet_pre");
                     else if (Scene == 2)
                         SceneManager.LoadScene("Toilet");
                     else if (Scene == 3)
+                    {
+                        Debug.Log("corridor");
                         SceneManager.LoadScene("Corridor");
+                    }
                     else if (Scene == 4)
                         SceneManager.LoadScene("Clear_Corridor");
                     else if (Scene == 5)

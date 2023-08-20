@@ -48,8 +48,6 @@ public class Corridor : MonoBehaviour
 
     void Update()
     {
-        //while (gameStart)   // 나가기를 누르지 않았을 경우에 
-        //{
             Vector3 curPos = transform.position;                        // 배경 움직이기
             Vector3 nextPos = Vector3.down * speed * Time.deltaTime;
             transform.position = curPos + nextPos;
@@ -59,15 +57,14 @@ public class Corridor : MonoBehaviour
                 transform.position = transform.position + Vector3.up * viewHeight * 2;
             }
             StartCoroutine(Timer());
-        //}
     }
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(8f);    // 58초 예정
+        yield return new WaitForSeconds(39.2f);    // 58초 예정
         this.generator.isEnd = true;            // 장애물 생성 종료. 
 
-        if (player.speed >= 1)
+        if (player.Speed >= 1)
         {
 
             yield return new WaitForSeconds(1f);

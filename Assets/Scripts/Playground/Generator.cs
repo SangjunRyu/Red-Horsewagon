@@ -15,7 +15,7 @@ public class Generator : MonoBehaviour
 
     public bool isEnd = false;
 
-    private void Awake()
+    private void Awake() 
     {
         Transform[] allTransforms = GetComponentsInChildren<Transform>();
         spawnPoints = new Transform[allTransforms.Length - 1];

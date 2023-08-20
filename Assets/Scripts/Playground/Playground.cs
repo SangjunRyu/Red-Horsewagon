@@ -20,6 +20,7 @@ public class Playground : MonoBehaviour
 
     public GameObject[] playGround;
 
+    public Player player;
     private void Awake()
     {
         PlayerPrefs.SetInt("SceneNum", SceneNum);
@@ -53,25 +54,26 @@ public class Playground : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(8f);    
+        yield return new WaitForSeconds(39.2f);    // 58초 예정
         this.generator.isEnd = true;            // 장애물 생성 종료. 
 
-        yield return new WaitForSeconds(1f);
-        foreach (GameObject item in itemObjects)
+        if (player.Speed >= 1)
         {
-            item.SetActive(true);               // 찾기 오브젝트 배치
-        }
 
-        yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
-        spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
-        foreach(GameObject cone in roadCone)
-        {
-            cone.SetActive(false);              // 꼬깔콘 끄기
+            yield return new WaitForSeconds(1f);
+            foreach (GameObject item in itemObjects)
+            {
+                item.SetActive(true);               // 찾기 오브젝트 배치
+            }
+
+            yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
+            spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
+
+            endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
+
+            this.isMove = false;
+            this.playGround[1].SetActive(false);
         }
-        endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
-        
-        this.isMove = false;                   
-        this.playGround[1].SetActive(false);
     }
 
 }

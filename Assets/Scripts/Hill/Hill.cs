@@ -10,7 +10,8 @@ public class Hill : MonoBehaviour
     public bool isMove = true;                   // 끝날때 움직임 비활성화
 
     private SpriteRenderer spriteRenderer;
-    
+
+    public Player player;
 
     public GameObject endPoint;                 // 끝날때 종점 탐지포인트 활성화
     public GameObject parent;                   // 끝날때 장애물 생성기 끄기
@@ -53,20 +54,23 @@ public class Hill : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(39.2f);    // 58초 예정
         this.generator.isEnd = true;            // 장애물 생성 종료. 
 
-        yield return new WaitForSeconds(1f);
-        foreach (GameObject item in itemObjects)
+        if (player.Speed >= 1)
         {
-            item.SetActive(true);               // 찾기 오브젝트 배치
+
+            yield return new WaitForSeconds(1f);
+            foreach (GameObject item in itemObjects)
+            {
+                item.SetActive(true);               // 찾기 오브젝트 배치
+            }
+
+            yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
+            endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
+
+            this.isMove = false;
+            this.hill[1].SetActive(false);
         }
-
-        yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
-        
-        endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
-
-        this.isMove = false;
-        this.hill[1].SetActive(false);
     }
 }

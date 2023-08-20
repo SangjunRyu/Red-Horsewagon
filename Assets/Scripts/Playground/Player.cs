@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISpeedChangeable
 {
     public Vector2 inputVec;
-    public float speed=5;           // 이동속도, 장애물 닿을 시 감소. 1 도달시에 사망
+    private float speed=5f;           // 이동속도, 장애물 닿을 시 감소. 1 도달시에 사망
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
     private bool isMove = true;      // 특정 장애물 닿을 시 정지
     public Rigidbody2D rigid;       
     
     public AudioSource audioSource1;     // 걷기 사운드
     public AudioSource audioSource2;     // 사망음악
-    //private float initialPitch = 1.25f; // 시작 사운드 높이
-    //private float minPitch = 0.25f;     // 속도가 줄었을 때 사운드 느리게
 
     private void Awake()
     {
@@ -42,11 +46,18 @@ public class Player : MonoBehaviour
             if (speed <= 1)
             {
                 audioSource2.Play();                    // 비명소리 재생
-                StartCoroutine(SmoothSpeedChange());    // 점차 느려지다 사망씬 등장
+                ISpeedChangeable speedChangeable = GetComponent<ISpeedChangeable>();
+                SmoothSpeedChange speedChange = new SmoothSpeedChange();
+                StartCoroutine(speedChange.SpeedChange(speedChangeable, speed));   // 속도 0까지 느려지다가 사망씬
+                Invoke("DelayedPlayerDead", 2f);
             }
         }
     }
 
+    private void DelayedPlayerDead()
+    {
+        GameManager.Instance.OnPlayerDead();
+    }
     public IEnumerator Stop(float stopsec)
     {
         isMove = false;
@@ -63,26 +74,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private IEnumerator SmoothSpeedChange()
+    public void ChangeSpeed(float targetSpeed, float duration) // 느려지는 효과를 위한 메서드
     {
-        float initialSpeed = 1.0f;
-        float targetSpeed = 0f;
-        float duration = 3f;
-
-        float elapsedTime = 0.0f;
-        float currentSpeed = initialSpeed;
-
-        while (elapsedTime < duration)
-        {
-            currentSpeed = Mathf.Lerp(initialSpeed, targetSpeed, elapsedTime / duration); // 2초동안 속도줄이기
-            speed = currentSpeed;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        currentSpeed = targetSpeed;
-        yield return new WaitForSeconds(0.5f);
-        GameManager.Instance.OnPlayerDead();
-    }
-
-
+        
+    }    
 }

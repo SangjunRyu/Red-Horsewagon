@@ -32,6 +32,7 @@ public class Start_ : MonoBehaviour
     {
         PlayerPrefs.SetInt("SceneNum", SceneNum);
         PlayerPrefs.Save();
+        Debug.Log("startscene save");
     }
 
     public int NextDialogue(Text txt, int cnt)

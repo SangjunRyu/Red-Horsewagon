@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingAx : MonoBehaviour
 {
-    Rigidbody2D rigid;
+    public Rigidbody2D rigid;
     public float speed;
     Vector2 dirVec, norVec;
 
@@ -23,5 +23,7 @@ public class MovingAx : MonoBehaviour
     {
         rigid.velocity = norVec * Time.deltaTime * 2000;
         transform.Rotate(Vector3.back * Time.deltaTime * 360);
+        Debug.Log(dirVec);
+
     }
 }
