@@ -80,7 +80,7 @@ public class ClearHill_last : MonoBehaviour
         //**비명소리 출력
         effectSounds[1].source.loop = false;
         effectSounds[1].source.Play();
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(8);
 
         //**가운데 대사 출력
         while (count < 7)
