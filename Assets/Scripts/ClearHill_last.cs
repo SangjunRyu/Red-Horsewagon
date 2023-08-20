@@ -34,6 +34,10 @@ public class ClearHill_last : MonoBehaviour
 
         effectSounds[0].source.loop = true;
         effectSounds[0].source.Play(); //구두소리 실행
+
+        PlayerPrefs.SetInt("GameCleared", 1); // 게임 클리어 상황저장. 메인 Extra 버튼 활성화검사용
+        PlayerPrefs.Save();
+        Debug.Log("gameCleared");
     }
 
     void Update()

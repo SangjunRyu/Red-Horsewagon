@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BtnType : MonoBehaviour
 {
     public BTNType currentType;
-
+    public GameObject extraButton;
     private void Awake()
     {
-        //Debug.Log(PlayerPrefs.GetInt("SceneNum"));    초깃값이 2로 설정됨.
+        Debug.Log(!PlayerPrefs.HasKey("FirstRun"));    // 처음시작인지확인
+        if (PlayerPrefs.GetInt("GameCleared") == 1)
+        {
+            extraButton = GetComponent<GameObject>();
+            
+        }
     }
     public void OnBtnClick()
     {
@@ -27,7 +33,7 @@ public class BtnType : MonoBehaviour
                     {
                         PlayerPrefs.SetInt("FirstRun", 1);
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("start");
+                        SceneManager.LoadScene("Start");
                         break;
                     }   
                     int Scene = PlayerPrefs.GetInt("SceneNum");
@@ -63,6 +69,10 @@ public class BtnType : MonoBehaviour
             case BTNType.Quit:
                 //Debug.Log("끝");
                 Application.Quit();
+                break;
+
+            case BTNType.Extra:
+
                 break;
         }
 

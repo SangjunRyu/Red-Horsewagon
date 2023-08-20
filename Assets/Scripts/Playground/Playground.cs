@@ -68,7 +68,10 @@ public class Playground : MonoBehaviour
 
             yield return new WaitForSeconds(0.6f);    // 탈출문 나오게 하기 
             spriteRenderer.sprite = newSprite;      // 밑에서 변화하고 끌어올려야함. 
-
+            for (int i = 0; i <= 5; i++)
+            {
+                roadCone[i].SetActive(false);
+            }
             endPoint.SetActive(true);               // 변화하면서 같이 endpoint 활성화
 
             this.isMove = false;

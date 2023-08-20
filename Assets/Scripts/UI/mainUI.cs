@@ -6,7 +6,8 @@ public enum BTNType
 {
     New,
     Continue,
-    Quit
+    Quit,
+    Extra
 }
 
 public class mainUI : MonoBehaviour

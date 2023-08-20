@@ -19,7 +19,7 @@ public class Btn : MonoBehaviour
         GameManager.Instance.OnPlayerDead();
 
         //audioSource.Play();
-        Invoke("LoadDieScene",3.5f);
+        Invoke("LoadDieScene",2f);
     }
 
     private void LoadDieScene()

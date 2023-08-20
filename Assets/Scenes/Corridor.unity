@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8683980118648315758, guid: 2fbf02cf8b9e8a149911f5b798024724, type: 3}
   m_PrefabInstance: {fileID: 8683980120254069698}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8683980120254069699}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6e407eee2a157c469949c1c8e2a4c82, type: 3}
@@ -2609,5 +2609,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8683980118648315757, guid: 2fbf02cf8b9e8a149911f5b798024724, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2fbf02cf8b9e8a149911f5b798024724, type: 3}
+--- !u!1 &8683980120254069699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8683980118648315753, guid: 2fbf02cf8b9e8a149911f5b798024724, type: 3}
+  m_PrefabInstance: {fileID: 8683980120254069698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &8683980120254069700
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8683980120254069699}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0019809306, y: 0}
+  m_Size: {x: 0.32352442, y: 1.09}
+  m_Direction: 0
