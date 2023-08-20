@@ -10,12 +10,11 @@ public class Player_Toilet : MonoBehaviour
     public float speed = 5;
     private bool isMove = true;      // 특정 장애물 닿을 시 정지
     public Rigidbody2D rigid;
-
     private AudioSource audioSource;     // 걷기 사운드
 
     public Image dialogue_UI; //대사창 UI
-    public Text dialogue_right; //맞는 문 대사
-    public Text dialogue_wrong; //틀린 문 대사
+    public Text dialogue_txt; //대사
+    [SerializeField] private Dialogue[] dialogue; //대사 모음
 
     public Image txt_screen;
 
@@ -70,17 +69,19 @@ public class Player_Toilet : MonoBehaviour
     }
     IEnumerator Right()
     {
-        dialogue_wrong.gameObject.SetActive(false); //틀렸을때 대사 비활성화
-        dialogue_right.gameObject.SetActive(true);;//맞았을때 대사 활성화
         speed = 0; //캐릭터 조작 못하도록
-        yield return new WaitForSeconds(1f);
+
+        dialogue_txt.text = dialogue[1].dialogue;
+        dialogue_txt.gameObject.SetActive(true);//대사 활성화
+        yield return new WaitForSeconds(2);
+
         txt_screen.gameObject.SetActive(true); //글자 연출 화면 활성화
-        dialogue_UI.gameObject.SetActive(false);
     }
 
     IEnumerator Wrong() //잠시 캐릭터 멈춤
     {
-        dialogue_right.gameObject.SetActive(false);
+        dialogue_txt.text = dialogue[0].dialogue; //틀렸을 때 대사로
+        dialogue_txt.gameObject.SetActive(true); //대사 활성화
         speed = 0;
         yield return new WaitForSeconds(1f);
         speed = 5;

@@ -9,14 +9,11 @@ public class Toilet_pre_last : MonoBehaviour
     public AudioSource shoesound; //구두소리
     public Image dialogue_UI; //대사창 UI
     public Image choose; //선택지
-    public Text dialogue_right; //맞는 문 대사
-    public Text dialogue_wrong; //틀린 문 대사
+    public Text redhorsewagon; //빨간마차 대사
+    public Text dialogue_txt; //대사창 대사
 
-    //**텍스트
-    [SerializeField] private Text txt_Dialogue;
-    [SerializeField] private Dialogue[] dialogue;
 
-    private int count = 0; //대사 횟수
+    [SerializeField] private Dialogue[] dialogue; //대사 모음
 
     private void Awake()
     {
@@ -25,40 +22,32 @@ public class Toilet_pre_last : MonoBehaviour
 
     private void Start()
     {
+        redhorsewagon.gameObject.SetActive(false);
         StartCoroutine(Text_Show());
     }
 
     IEnumerator Text_Show()
     {
-        yield return new WaitForSeconds(0.5f);
-        while (count < 3)
+        for (int i=0; i<2; i++)
         {
-            //**대사 나타나게
-            txt_Dialogue.text = dialogue[count].dialogue;
-            txt_Dialogue.gameObject.SetActive(true);
-
-            if (count == 2) //3번째 대사 출력일 경우
-            {
-                txt_Dialogue.color = Color.red; //글씨 빨간색
-                shoesound.Play(); //구두소리 재생
-            }
-
-            yield return new WaitForSeconds(2f);
-            
-            //if (shoesound.isPlaying)
-                //shoesound.Stop(); //구두소리 끄기
-
-            //**대사 사라지게
-            txt_Dialogue.gameObject.SetActive(false);
-
+            dialogue_txt.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.5f);
-            count++;
+            dialogue_txt.text = dialogue[i].dialogue;
+            dialogue_txt.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2);
         }
+        dialogue_UI.gameObject.SetActive(false);//대사 비활성화
+
+        shoesound.Play(); //구두소리
+        yield return new WaitForSeconds(2f);
+        redhorsewagon.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        redhorsewagon.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
 
         //**선택지 등장
         dialogue_UI.gameObject.SetActive(true);
-        dialogue_wrong.gameObject.SetActive(false);
-        dialogue_right.gameObject.SetActive(false);
+        dialogue_txt.gameObject.SetActive(false);
         choose.gameObject.SetActive(true);
     }
 }
