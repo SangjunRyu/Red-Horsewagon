@@ -4,17 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum BTNType
+{
+    New,
+    Continue,
+    Quit,
+    Extra
+}
+
 public class BtnType : MonoBehaviour
 {
     public BTNType currentType;
-    public GameObject extraButton;
+
     private void Awake()
     {
-        Debug.Log(!PlayerPrefs.HasKey("FirstRun"));    // 처음시작인지확인
+        Debug.Log("Is First Run?: " + !PlayerPrefs.HasKey("FirstRun"));    // 처음시작인지확인
         if (PlayerPrefs.GetInt("GameCleared") == 1)
         {
-            extraButton = GetComponent<GameObject>();
-            
+            Debug.Log("cleared");
         }
     }
     public void OnBtnClick()
@@ -72,7 +79,7 @@ public class BtnType : MonoBehaviour
                 break;
 
             case BTNType.Extra:
-
+                SceneManager.LoadScene("Extra");
                 break;
         }
 
